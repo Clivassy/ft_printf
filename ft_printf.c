@@ -6,7 +6,7 @@
 /*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 11:13:58 by jbatoro           #+#    #+#             */
-/*   Updated: 2021/12/10 16:53:52 by jbatoro          ###   ########.fr       */
+/*   Updated: 2021/12/10 16:57:36 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "printf.h"
@@ -31,9 +31,12 @@ int ft_printf(const char *s, ...)
 			i++;
 		if (s[i]  == 's')
 		{
-			string = va_arg(args, char *);
-			ft_putchar_fd(string[i], 1);
-			i++;
+			while (s[i] && s[i] != '%')
+			{
+				string = va_arg(args, char *);
+				ft_putstr_fd(string, 1);
+				i++;
+			}
 		}
 	}
 	va_end (args);
