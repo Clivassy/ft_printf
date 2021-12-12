@@ -1,12 +1,10 @@
-SRCS	= ft_printf.c \
+SRCS	= ft_printf.c ft_is_string.c\
 
 OBJS	= ${SRCS:.c=.o}
 
-OBJS_B	= ${SRCS_B:.c=.o}
-
 CC	= gcc
 
-NAME	= libft.a
+NAME	= libprintf.a
 
 CFLAGS	= -Wall -Werror -Wextra 
 
@@ -18,7 +16,7 @@ RM	= rm -f
 	
 all : ${NAME}
 
-$(NAME) : ${OBJS} libft.h
+$(NAME) : ${OBJS} libprintf.h
 	@echo "\033[0;33mLinking..."
 	@ar rcs ${NAME} ${OBJS}
 	@echo "\033[0;32mOK!"

@@ -9,27 +9,84 @@
 /*   Updated: 2021/12/11 19:24:50 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include "libprintf.h"
 
-char	*ft_is_string(unsigned int i, char *s, ...)
+void	ft_putchar(char c)
 {
-	char *string;
-	va_list args;
+	write(1, &c, 1);
+}
 
-	va_start (args, s);
-	while (s[i] && s[i] != '%')
+void	ft_erreur(char *base, int *erreur)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (base[0] == '\0' || base[1] == '\0')
+		*erreur = 1;
+	while (base[i] && *erreur == 0)
 	{
-		string = va_arg(args, char *);
-		ft_putstr_fd(string, 1);
-		i++;
-		while (s[i] && s[i] != '%')
+		j = i;
+		while (base[j] != '\0')
 		{
-			ft_putchar_fd(s[i], 1);
+			j++;
+			if (base[i] == base[j])
+				*erreur = 1;
+		}
+		if (base[i] == '+' || base[i] == '-' || base[i] == '%'
+				|| base[i] == '/' || base[i] == '*' || base[i] == '='
+				|| base[i] == ',' || base[i] == '.'
+				|| base[i] < 33 || base[i] > 126)
+			*erreur = 1;
+		else
 			i++;
+	}
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		lbase;
+	int		erreur;
+	long	nb;
+
+	lbase = 0;
+	erreur = 0;
+	ft_erreur(base, &erreur);
+	nb = nbr;
+	if (erreur == 0)
+	{
+		if (nb < 0)
+		{
+			ft_putchar('-');
+			nb *= -1;
+		}
+		while (base[lbase])
+			lbase++;
+		if (nb < lbase)
+			ft_putchar(base[nb]);
+		if (nb >= lbase)
+		{
+			ft_putnbr_base(nb / lbase, base);
+			ft_putnbr_base(nb % lbase, base);
 		}
 	}
-	va_end (args);
-	return (string);
+}
+
+long int	ft_is_hexa(unsigned int i, char *s, va_list args)
+{
+	unsigned int hexa_nb;
+
+	hexa_nb = 0;
+	hexa_nb  = va_arg(args, unsigned int);
+	ft_putnbr_base(16, s);
+	i++;
+	while (s[i] && s[i] != '%')
+	{
+		ft_putchar_fd(s[i], 1);
+		i++;
+	}
+	return (hexa_nb);
 }
 
 int ft_printf(const char *s, ...)
@@ -45,116 +102,51 @@ int ft_printf(const char *s, ...)
 		ft_putchar_fd(s[i], 1);
 		i++;
 	}
-	while (s[i] == '%') // A gerer : le cas des %% d affile
-		i++;
-/* Cas a mettre dans une fonction a part*/
+	while (s[i] == '%')
+	{
+		if (s[i + 1] == '%')
+		{
+			ft_putchar_fd('%', 1);
+			break;
+		}
+		else
+			i++;
+	}
 	if (s[i]  == 's')
 		ft_is_string(s[i], (char*)s, args);
-/*	if (s[i] == 'i')
-		ft_is_integer(s);
-	if (s[i] == 'c')
-		ft_is_character(s[i]); 
-	if (s[i] == 'u')
-		ft_is_unsigned(s[i]);
-	if (s[i] == 'p')
-		ft_is_pointer(s[i]);
-	if (s[i] == 'd')
-		ft_is_decimal(s[i]);
-	if (s[i] == 'x')
-		ft_is_hexa(s[i]);*/
-
-	va_end (args);
-	return (i);
-}
-
-
-/*
-
-int	*ft_is_integer(char *s)
-{
-	int	nb;
-
-	nb = 0;
-
 	if (s[i] == 'i')
-	{
-		while (s[i] && s[i] != '%')
-		{
-			nb = va_arg(args, int);
-			ft_putnbr_fd(nb, 1);
-			i++;
-		}
-	}
-	return (nb);
-}
-
-int	*ft_is_character(char *s)
-{
-	int c;
-
-	character = 0;
+		ft_is_integer(s[i], (char*)s, args);
 	if (s[i] == 'c')
-	{
-		while (s[i] && s[i] != '%')
-		{
-			character = va_arg(args, int);
-			ft_putchar_fd(character, 1);
-			i++;
-		}
-	}
-	return (character);
-}
-
-unsigned int	*ft_is_unsigned(char *s)
-{
-	unsigned int u_nb;
-
-	u_nb = 0;
+		ft_is_character(s[i], (char*)s, args); 
 	if (s[i] == 'u')
-	{
-		while (s[i] && s[i] != '%')
-		{
-			u_nb = va_arg(args, unsigned int);
-			ft_putnbr_fd(u_nb, 1);
-			i++;
-		}
-	}
-	return (u_nb);
-}
-
-int	*ft_is_decimal(char *s)
-{
-	int	nb;
-
-	nb = 0;
+		ft_is_unsigned(s[i], (char*)s, args);
 	if (s[i] == 'd')
-	{
-		while (s[i] && s[i] != '%')
-		{
-			nb  = va_arg(args, int);
-			ft_putnbr_fd(nb, 1);
-			i++;
-		}
-	}
-	return (nb);
+		ft_is_decimal(s[i],(char*)s, args);
+	if (s[i] == 'x' || s[i] == 'X')
+		ft_is_hexa(s[i],(char*)s, args);
+	/*if (s[i] == 'p')
+		ft_is_pointer(s[i]); //unsigned long
+	*/
+	va_end (args);
+	return (i); // length of the printed string (int)
 }
-*/
 
 #include <stdio.h>
 int main(void)
 {
-	int nb = 20;
-	char *str = "Oui ca va et toi?";
-	char	c = 'Y';
-	unsigned int u_nb = 123456;
+	unsigned int	hexa_nb = 123456;
+	//char *str = "Julia";
+	//char	c = 'Y';
+	//unsigned int u_nb = 123456;
 
-	ft_printf("Hello ca va ?\n%s\nTant mieux :)\nQuel age a tu?%s\n", str);
+	//	ft_printf("%d", nb);
 	//	ft_printf("%s", str);
 	//	ft_printf("%c", c);
 	//	ft_printf("%u", u_nb);
 	//	ft_printf("%p", nb);
 	//	ft_printf("%i", nb);
-	//	ft_printf("%x", nb);
-	//	ft_printf("%d\n", nb);
+		ft_printf("%x", hexa_nb);
+		//ft_printf("%d\n", nb);
 	return (0);
 }
+
