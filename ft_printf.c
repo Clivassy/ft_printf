@@ -11,75 +11,22 @@
 /* ************************************************************************** */
 #include "libprintf.h"
 
-void	ft_putchar(char c)
+unsigned long ft_is_pointer(unsigned int i, char *s, va_list args)
 {
-	write(1, &c, 1);
+	void	*n;
+
+	ft_putchar_fd('0', 1);
+	ft_putchar_fd('x', 1);
+	n = va_arg(args, void *);
 }
 
-void	ft_erreur(char *base, int *erreur)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	if (base[0] == '\0' || base[1] == '\0')
-		*erreur = 1;
-	while (base[i] && *erreur == 0)
-	{
-		j = i;
-		while (base[j] != '\0')
-		{
-			j++;
-			if (base[i] == base[j])
-				*erreur = 1;
-		}
-		if (base[i] == '+' || base[i] == '-' || base[i] == '%'
-				|| base[i] == '/' || base[i] == '*' || base[i] == '='
-				|| base[i] == ',' || base[i] == '.'
-				|| base[i] < 33 || base[i] > 126)
-			*erreur = 1;
-		else
-			i++;
-	}
-}
-
-void	ft_putnbr_base(int nbr, char *base)
-{
-	int		lbase;
-	int		erreur;
-	long	nb;
-
-	lbase = 0;
-	erreur = 0;
-	ft_erreur(base, &erreur);
-	nb = nbr;
-	if (erreur == 0)
-	{
-		if (nb < 0)
-		{
-			ft_putchar('-');
-			nb *= -1;
-		}
-		while (base[lbase])
-			lbase++;
-		if (nb < lbase)
-			ft_putchar(base[nb]);
-		if (nb >= lbase)
-		{
-			ft_putnbr_base(nb / lbase, base);
-			ft_putnbr_base(nb % lbase, base);
-		}
-	}
-}
-
-long int	ft_is_hexa(unsigned int i, char *s, va_list args)
+unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args)
 {
 	unsigned int hexa_nb;
 
 	hexa_nb = 0;
 	hexa_nb  = va_arg(args, unsigned int);
-	ft_putnbr_base(16, s);
+	
 	i++;
 	while (s[i] && s[i] != '%')
 	{
@@ -134,19 +81,15 @@ int ft_printf(const char *s, ...)
 #include <stdio.h>
 int main(void)
 {
-	unsigned int	hexa_nb = 123456;
-	//char *str = "Julia";
-	//char	c = 'Y';
-	//unsigned int u_nb = 123456;
+	void	*pointer_to_main = (void *) main;
 
-	//	ft_printf("%d", nb);
-	//	ft_printf("%s", str);
-	//	ft_printf("%c", c);
-	//	ft_printf("%u", u_nb);
-	//	ft_printf("%p", nb);
-	//	ft_printf("%i", nb);
-		ft_printf("%x", hexa_nb);
-		//ft_printf("%d\n", nb);
+	ft_printf("Print an integer : %d. Done\n", 8);
+	ft_printf("Print a neg integer : %d. Done\n", -8);
+	ft_printf("Print a string : %s. Done\n", "Hello c'est Julia");
+	ft_printf("Print an integer : %i. Done\n", 123);
+	ft_printf("Print a pointer adress : %p. Done\n", pointer_to_main);
+	ft_printf("Print an hex integer : %x. Done\n", 10);
+	//ft_printf("Print a neg integer : %X. Done\n", -8);
 	return (0);
 }
 
