@@ -12,30 +12,8 @@
 #include "libprintf.h"
 #include <stdio.h>
 
-/*unsigned long ft_is_pointer(unsigned int i, char *s, va_list args)
-  {
-  void	*n;
 
-  ft_putchar_fd('0', 1);
-  ft_putchar_fd('x', 1);
-  n = va_arg(args, void *);
-  }
-
-  unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args)
-  {
-  unsigned int hexa_nb;
-
-  hexa_nb = 0;
-  hexa_nb  = va_arg(args, unsigned int);
-
-  i++;
-  while (s[i] && s[i] != '%')
-  {
-  ft_putchar_fd(s[i], 1);
-  i++;
-  }
-  return (hexa_nb);
-  }*/
+ 
 
 int ft_printf(const char *s, ...)
 {
@@ -58,16 +36,20 @@ int ft_printf(const char *s, ...)
 					ft_is_character(s[i], (char*)s, args);
 				if (s[i]  == 's')
 					ft_is_string(s[i], (char*)s, args);
-				//if (s[i] == 'p')
-				//	  ft_is_pointer(s[i]); //unsigned long
+				if (s[i] == 'p')
+				{
+					ft_putchar_fd('0', 1);
+    				ft_putchar_fd('x', 1);
+					ft_is_pointer(s[i],(char*)s, args);
+				}
 				if (s[i] == 'd')
 					ft_is_decimal(s[i],(char*)s, args);
 				if (s[i] == 'i')
 					ft_is_integer(s[i], (char*)s, args);
 				if (s[i] == 'u')
 					ft_is_unsigned(s[i], (char*)s, args);
-				//if (s[i] == 'x' || s[i] == 'X')
-				//	ft_is_hexa(s[i],(char*)s, args);
+				if (s[i] == 'x' || s[i] == 'X')
+					ft_is_hexa(s[i],(char*)s, args);
 				break;
 			}
 			i++;
@@ -82,15 +64,18 @@ int ft_printf(const char *s, ...)
 #include <stdio.h>
 int main()
 {
-	//void	*pointer_to_main = (void *) main;
+//	void	*pointer_to_main = (void *) main;
 	//char str[] = "hello";
 	//char str2[] = "je m appelle julia";
 	//ft_printf("Print an integer : %d\nPrint a second integer : %d\nPrint a third integer : %d\n", 875, 58, 456);
 	//	ft_printf("Print a neg integer : %d\nDone\n", -8);
 	//	ft_printf("Print a string : %s\nSecond string : %s\n", str, str2);
 	//	ft_printf("Print an integer : %i. Done\n", 123);
-	//	ft_printf("Print a pointer adress : %p. Done\n", pointer_to_main);
-	//	ft_printf("Print an hex integer : %x. Done\n", 10);
+	//	ft_printf("Print a pointer adress : %p\nDone\n", pointer_to_main);
+	//	printf("Print a pointer adress : %p\nDone\n", pointer_to_main);
+		ft_printf("Print an hex integer : %x. Done\n", 10);
+		printf("Print an hex integer : %x. Done\n", 10);
 	//	ft_printf("Print a neg integer : %X. Done\n", -8);
+	//	ft_printf("Print a character : %c\n", 'c');
 }
 

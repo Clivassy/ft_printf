@@ -1,5 +1,4 @@
 #include "libprintf.h"
-#include <stdio.h>
 
 static int	ft_check_base(char *base)
 {
@@ -27,7 +26,7 @@ static int	ft_check_base(char *base)
 	return (1);
 }
 
-void	ft_putnbr_base(unsigned int nbr, char *base)
+void	ft_putnbr_base_bis(int nbr, char *base)
 {
 	long int	long_nbr;
 	int			base_size;
@@ -42,21 +41,17 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 			long_nbr = nbr * (-1);
 		}
 		if (nbr > base_size)
-			ft_putnbr_base(nbr / 16, base);
-		ft_putchar_fd(base[long_nbr % 16], 1);
+			ft_putnbr_base_bis(nbr / base_size, base);
+		ft_putchar_fd(base[long_nbr % base_size], 1);
 	}
 }
 
- unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args)
-  {
-  unsigned int hexa_nb;
-  char *base;
-
-  hexa_nb = 0;
-  hexa_nb  = va_arg(args, unsigned int);
-  base = ft_utoa(hexa_nb);
-  printf("%s", base);
-  ft_putnbr_base(hexa_nb, base);
-  i++;
-  return (hexa_nb);
-  }
+unsigned long *ft_is_pointer(unsigned int i, char *s, va_list args)
+{
+    void	*n;
+    char  base[] = "0123456789ABCDEF";
+    n = va_arg(args, void *);
+    ft_putnbr_base_bis((int)n, base);
+    i++;
+    return (n);
+}
