@@ -1,5 +1,4 @@
 #include "libprintf.h"
-#include <stdio.h>
 
 static int	ft_check_base(char *base)
 {
@@ -55,6 +54,18 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
   hexa_nb = 0;
   hexa_nb  = va_arg(args, unsigned int);
   ft_putnbr_base(hexa_nb, base);
-  i++;
   return (hexa_nb);
   }
+
+ unsigned int	ft_is_HEXA(unsigned int i, char *s, va_list args)
+  {
+  unsigned int hexa_nb;
+  char base[] = "0123456789ABCDEF";
+
+  hexa_nb = 0;
+  hexa_nb  = va_arg(args, unsigned int);
+  ft_putnbr_base(hexa_nb, base);
+  return (hexa_nb);
+  }
+
+  

@@ -26,7 +26,7 @@ static int	ft_check_base(char *base)
 	return (1);
 }
 
-void	ft_putnbr_base_bis(unsigned long nbr, char *base)
+void	ft_putnbr_base_pointer(unsigned long nbr, char *base)
 {
 	unsigned long 	long_nbr;
 	 int			base_size;
@@ -41,7 +41,7 @@ void	ft_putnbr_base_bis(unsigned long nbr, char *base)
 			long_nbr = -long_nbr;
 		}
 		if (long_nbr > base_size)
-			ft_putnbr_base_bis(long_nbr / base_size, base);
+			ft_putnbr_base_pointer(long_nbr / base_size, base);
 		ft_putchar_fd(base[long_nbr % base_size], 1);
 	}
 }
@@ -53,8 +53,28 @@ unsigned long *ft_is_pointer(unsigned int i, char *s, va_list args)
 	
     char  base[] = "0123456789abcdef";
     adress = va_arg(args, unsigned long);
-    ft_putnbr_base_bis(adress, base);
+    ft_putnbr_base_pointer(adress, base);
     i++;
 	result = &adress;
     return (result);
+}
+
+int ft_number_len(unsigned long *nb)
+{
+	int	len;
+	long nbr;
+
+	nbr = (unsigned long)nb;
+	len = 0;
+	if (nbr < 0)
+	{
+		len = nbr * (-1);
+		len++;
+	}
+	while (nbr > 0)
+	{
+		nbr = nbr / 10;
+		len++;
+	}
+	return (len);
 }

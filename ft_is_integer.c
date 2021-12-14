@@ -19,6 +19,5 @@ int	ft_is_integer(unsigned int i, char *s, va_list args)
 	nb = 0;
 		nb = va_arg(args, int);
 		ft_putnbr_fd(nb, 1);
-		i++;
 	return (nb);
 }

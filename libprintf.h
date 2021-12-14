@@ -24,5 +24,8 @@ int             ft_is_decimal(unsigned int i, char *s, va_list args);
 unsigned int	ft_is_unsigned(unsigned int i, char *s, va_list args);
 unsigned long   *ft_is_pointer(unsigned int i, char *s, va_list args);
 unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args);
-char	        *ft_utoa(unsigned int n);
+unsigned int	ft_is_HEXA(unsigned int i, char *s, va_list args);
+int	            ft_len(unsigned int count, char *str);
+int           ft_number_len(unsigned long *nb);
+//char	        *ft_utoa(unsigned int n);
 #endif
