@@ -50,12 +50,10 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
  unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args)
   {
   unsigned int hexa_nb;
-  char *base;
+  char base[] = "0123456789abcdef";
 
   hexa_nb = 0;
   hexa_nb  = va_arg(args, unsigned int);
-  base = ft_utoa(hexa_nb);
-  printf("%s", base);
   ft_putnbr_base(hexa_nb, base);
   i++;
   return (hexa_nb);

@@ -12,9 +12,6 @@
 #include "libprintf.h"
 #include <stdio.h>
 
-
- 
-
 int ft_printf(const char *s, ...)
 {
 	unsigned int i;
@@ -64,17 +61,25 @@ int ft_printf(const char *s, ...)
 #include <stdio.h>
 int main()
 {
-//	void	*pointer_to_main = (void *) main;
+	void	*new_pointer;
+	int a;
+	new_pointer = &a;
+
+	char *test; 
+	char c;
+	test = &c;
 	//char str[] = "hello";
 	//char str2[] = "je m appelle julia";
 	//ft_printf("Print an integer : %d\nPrint a second integer : %d\nPrint a third integer : %d\n", 875, 58, 456);
 	//	ft_printf("Print a neg integer : %d\nDone\n", -8);
 	//	ft_printf("Print a string : %s\nSecond string : %s\n", str, str2);
 	//	ft_printf("Print an integer : %i. Done\n", 123);
-	//	ft_printf("Print a pointer adress : %p\nDone\n", pointer_to_main);
-	//	printf("Print a pointer adress : %p\nDone\n", pointer_to_main);
-		ft_printf("Print an hex integer : %x. Done\n", 10);
-		printf("Print an hex integer : %x. Done\n", 10);
+		ft_printf("Print a pointer adress : %p\nDone\n", new_pointer);
+		printf("Print a pointer adress : %p\nDone\n", new_pointer);
+		ft_printf("Print a pointer adress : %p\nDone\n", test);
+		printf("Print a pointer adress : %p\nDone\n", test);
+	//	ft_printf("Print an hex integer : %x. Done\n", 123);
+	//	printf("Print an hex integer : %x. Done\n", 123);
 	//	ft_printf("Print a neg integer : %X. Done\n", -8);
 	//	ft_printf("Print a character : %c\n", 'c');
 }
