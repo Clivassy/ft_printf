@@ -10,5 +10,18 @@ int	ft_is_decimal(unsigned int i, char *s, va_list args)
 	return (nb);
 }
 
+int	ft_count_int_nb(int nb)
+{
+	int		len;
 
+	len = 0;
+	if (nb <= 0)
+		len = 1;
+	while (nb != 0)
+	{
+		len++;
+		nb = nb / 10;
+	}
+	return (len);
+}
 
