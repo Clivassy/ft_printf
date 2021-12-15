@@ -46,26 +46,23 @@ void	ft_putnbr_base(unsigned int nbr, char *base)
 	}
 }
 
- unsigned int	ft_is_hexa(unsigned int i, char *s, va_list args)
-  {
-  unsigned int hexa_nb;
-  char base[] = "0123456789abcdef";
+void	ft_putnbr_base_pointer(unsigned long nbr, char *base)
+{
+	unsigned long 	long_nbr;
+	 int			base_size;
 
-  hexa_nb = 0;
-  hexa_nb  = va_arg(args, unsigned int);
-  ft_putnbr_base(hexa_nb, base);
-  return (hexa_nb);
-  }
+	base_size = 16;
+	long_nbr = (unsigned long)nbr;
+	if (ft_check_base(base) == 1)
+	{
+		if (nbr < 0)
+		{
+			ft_putchar_fd('-', 1);
+			long_nbr = -long_nbr;
+		}
+		if (long_nbr > base_size)
+			ft_putnbr_base_pointer(long_nbr / base_size, base);
+		ft_putchar_fd(base[long_nbr % base_size], 1);
+	}
+}
 
- unsigned int	ft_is_HEXA(unsigned int i, char *s, va_list args)
-  {
-  unsigned int hexa_nb;
-  char base[] = "0123456789ABCDEF";
-
-  hexa_nb = 0;
-  hexa_nb  = va_arg(args, unsigned int);
-  ft_putnbr_base(hexa_nb, base);
-  return (hexa_nb);
-  }
-
-  

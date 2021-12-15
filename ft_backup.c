@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 19:10:17 by jbatoro           #+#    #+#             */
-/*   Updated: 2021/12/13 12:32:31 by jbatoro          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "libprintf.h"
 #include <stdio.h>
 
@@ -29,8 +18,8 @@ int ft_printf(const char *s, ...)
 			if (s[i + 1] == '%')
 				ft_putchar_fd('%', 1);
 			i++;
-			/*while (s[i] != '%')
-				ft_return(i, count, s, args);
+			while (s[i] != '%')
+			{
 				if (s[i] == 'c')
 				{
 					count++;
@@ -54,7 +43,8 @@ int ft_printf(const char *s, ...)
 					count = count + ft_count_unsigned(ft_is_hexa(s[i],(char*)s, args));
 				if (s[i] == 'X')
 					count = count + ft_count_unsigned(ft_is_HEXA(s[i],(char*)s, args));
-				break; */
+				break;
+			}
 			if (s[i])
 				i++;
 		}
@@ -102,7 +92,7 @@ int main()
 		ft_printf("----------------\n");
 		ft_printf("%%hello\n");
 		printf("%%hello\n");
-		
+		*/
 		ft_printf("----------------\n");
 		ft_printf("%%%%%\n", "hello");
 		printf("%%%%%\n", "hello");
@@ -112,8 +102,7 @@ int main()
 		ft_printf("----------------\n");
 		ft_printf("%%\n");
 		printf("%%\n");
-		ft_printf("----------------\n");*/
+		ft_printf("----------------\n");
 		ft_printf("%s%\n", "hello\n");
-		//printf("%s%\n","Hello");
+		printf("%s%\n","Hello");
 }
-
