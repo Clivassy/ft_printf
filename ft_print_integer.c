@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void	ft_putnbr_int_fd(int n)
+void	ft_putnbr_int(int n)
 {
 	if (n >= 0 && n <= 9)
 	{
@@ -11,13 +11,13 @@ void	ft_putnbr_int_fd(int n)
 	{
 			write(1, "-", 1);
 			n = n * (-1);
-			ft_putnbr_int_fd(n);
+			ft_putnbr_int(n);
 			return ;
 	}
 	else
 	{
-		ft_putnbr_int_fd(n / 10);
-		ft_putnbr_int_fd(n % 10);
+		ft_putnbr_int(n / 10);
+		ft_putnbr_int(n % 10);
 	}
 }
 
@@ -27,7 +27,7 @@ int	ft_is_i_or_d(va_list args)
 
 	nb = 0;
 	nb = va_arg(args, int);
-	ft_putnbr_int_fd(nb);
+	ft_putnbr_int(nb);
 	return (nb);
 }
 

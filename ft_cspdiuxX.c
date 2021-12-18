@@ -33,7 +33,7 @@ int     ft_cspdiuxX(va_list args, const char s)
 		if (s == 'u')
 			count += ft_len_unsigned(ft_is_unsigned(args));
 		if (s == 'x' || s == 'X')
-			count += ft_len_unsigned(ft_is_hexa(args, s));
+			count += ft_is_hexa(va_arg(args, unsigned int), s);
 		if (s == '%')
 			count += ft_printpercent();
 	return (count);

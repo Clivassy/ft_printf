@@ -1,4 +1,4 @@
-SRCS	= ft_printf.c ft_convert_base.c ft_count_len.c ft_csdi_cases.c ft_if_statement.c ft_print_functions.c ft_pxX_cases.c
+SRCS	= ft_printf.c ft_cspdiuxX.c ft_print_hexa.c ft_print_integer.c ft_print_ptr.c ft_print_string.c ft_print_unsigned.c
 
 OBJS	= ${SRCS:.c=.o}
 

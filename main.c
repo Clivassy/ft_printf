@@ -26,7 +26,7 @@ int res = printf("%% %%");
 printf("%d\n",res);
 ft_printf("%% %%");*/
 int result;
-result = printf(" %i %i", -45, -50);
+result = printf(" %x %x", 67, 12);
 printf("\n%i\n",result);
-ft_printf(" %i %i", -45, -50);
+ft_printf(" %x %x ", 67, 12);
 }
