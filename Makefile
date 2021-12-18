@@ -4,7 +4,7 @@ OBJS	= ${SRCS:.c=.o}
 
 CC	= gcc
 
-NAME	= libftprintf.a
+NAME	= ft_printf.a
 
 CFLAGS	= -Wall -Werror -Wextra 
 
@@ -16,7 +16,7 @@ RM	= rm -f
 	
 all : ${NAME}
 
-$(NAME) : ${OBJS} libftprintf.h
+$(NAME) : ${OBJS} ft_printf.h
 	@echo "\033[0;33mLinking..."
 	@ar rcs ${NAME} ${OBJS}
 	@echo "\033[0;32mOK!"

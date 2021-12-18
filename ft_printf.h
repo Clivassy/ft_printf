@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <string.h>
 # include <strings.h>
 # include <unistd.h>
+# include <stdlib.h>
 
-int		        ft_printf(const char *s, ...);
-char	        *ft_is_string(va_list args);
-int             ft_is_integer(va_list args);
-int	            ft_is_character (va_list args);
-int             ft_is_decimal(va_list args);
-unsigned int	ft_is_unsigned(va_list args);
-unsigned long   *ft_is_pointer(va_list args);
-unsigned int	ft_is_hexa(va_list args);
-unsigned int	ft_is_HEXA(va_list args);
-int	            ft_len(unsigned int count, char *str);
-int             ft_number_len(unsigned long *nb);
-int	            ft_count_int_nb(int nb);
-unsigned int	ft_count_unsigned(unsigned int nb);
+# include <stdio.h>
+
+int             ft_printf(const char *s, ...);
+int             ft_putchar(int c);
+int	            ft_printpercent(void);
+int             ft_cspdiuxX(va_list args, const char s);
+void	        ft_putnbr_base_hexa(unsigned int nbr, char *base);
+unsigned int	ft_is_hexa (va_list args, char c);
+unsigned int	ft_len_unsigned(unsigned int nb);
+void	        ft_putnbr_int_fd(int n);
+int	            ft_is_i_or_d(va_list args);
+int	            ft_len_int(int nb);
 void	        ft_putnbr_base_pointer(unsigned long nbr, char *base);
-void            ft_putchar_fd(char c, int fd);
-void            ft_putstr_fd(char *str, int fd);
-void	        ft_putnbr_unsigned_fd(unsigned n, int fd);
-size_t          ft_strlen(char *str);
-void	        ft_putnbr_base(unsigned int nbr, char *base);
-int     ft_return(unsigned int i, unsigned int count, const char *s, va_list args);
+int             ft_pointer_len(unsigned long *nb);
+unsigned long   *ft_is_pointer(va_list args);
+int	            ft_print_str(char *str);
+void            ft_putstr(char *str);
+void	        ft_putnbr_unsigned(unsigned n);
+unsigned int	ft_is_unsigned(va_list args);
 #endif
