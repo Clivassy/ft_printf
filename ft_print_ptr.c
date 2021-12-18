@@ -24,14 +24,9 @@ int ft_pointer_len(unsigned long *nb)
 
 	nbr = (unsigned long)nb;
 	len = 0;
-	if (nbr < 0)
+	while (nbr != 0)
 	{
-		len = nbr * (-1);
-		len++;
-	}
-	while (nbr > 0)
-	{
-		nbr = nbr / 10;
+		nbr = nbr / 16;
 		len++;
 	}
 	return (len);
