@@ -9,7 +9,6 @@
 /*   Updated: 2021/12/19 17:44:02 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 void	ft_putnbr_base_pointer(uintptr_t nbr, char *base)
@@ -19,7 +18,7 @@ void	ft_putnbr_base_pointer(uintptr_t nbr, char *base)
 
 	base_size = 16;
 	long_nbr = (unsigned long long)nbr;
-	if (long_nbr > base_size)
+	if (long_nbr > 15)
 		ft_putnbr_base_pointer(long_nbr / base_size, base);
 	ft_putchar(base[long_nbr % base_size]);
 }

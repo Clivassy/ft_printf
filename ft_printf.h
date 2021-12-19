@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	LIBFTFTPRINTF_H
-# define LIBFTFTPRINTF_H
+#ifndef	LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <stdarg.h>
 # include <string.h>
