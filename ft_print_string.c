@@ -18,7 +18,7 @@ int	ft_print_str(char *str)
 	return (i);
 }
 
-void  ft_putstr(char *str)
+char  *ft_putstr(char *str)
 {
     int i;
 
@@ -28,6 +28,7 @@ void  ft_putstr(char *str)
         write(1, &str[i], 1);
         i++;
     }
+	return(str);
 }
 
 

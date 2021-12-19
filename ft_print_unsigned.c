@@ -1,33 +1,64 @@
 #include "ft_printf.h"
 
-void	ft_putnbr_unsigned(unsigned n)
-
+int	ft_len_itoa(unsigned int nb)
 {
-	if (n >= 0 && n <= 9)
+	int	len;
+
+	len = 0;
+	if (nb < 0)
 	{
-		n = n + 48;
-		write(1, &n, 1);
+		len = nb * (-1);
+		len++;
 	}
-	else if (n < 0)
+	while (nb > 0)
 	{
-			write(1, "-", 1);
-			n = n * (-1);
-			ft_putnbr_unsigned(n);
-			return ;
+		nb = nb / 10;
+		len++;
 	}
-	else
+	return (len);
+}
+char	*ft_utoa(unsigned int nb)
+{
+	char 	*str;
+	int	i;
+
+	i = ft_len_itoa(nb);
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	str[i--] = '\0';
+	if (nb == 0)
 	{
-		ft_putnbr_unsigned(n / 10);
-		ft_putnbr_unsigned(n % 10);
+		str[0] = '\0';
+		return (str);
 	}
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = nb * (-1);
+	}
+	while (nb != 0)
+	{
+		str[i] = 48 + (nb % 10);
+		nb = nb / 10;
+		i--;
+	}
+	return (str);
 }
 
-unsigned int	ft_is_unsigned(va_list args)
+int	ft_print_unsigned(unsigned int n)
 {
-	unsigned int u_nb;
+	int		len;
+	char	*num;
 
-	u_nb = 0;
-	u_nb = va_arg(args, unsigned int);
-	ft_putnbr_unsigned(u_nb);
-	return (u_nb);
+	len = 0;
+	if (n == 0)
+		len += write(1, "0", 1);
+	else
+	{
+		num = ft_utoa(n);
+		len += ft_print_str(num);
+		free(num);
+	}
+	return (len);
 }

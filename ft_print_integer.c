@@ -1,7 +1,10 @@
 #include "ft_printf.h"
 
-void	ft_putnbr_int(int n)
+void	ft_putnbr_int(int nb)
 {
+	long n;
+
+	n = (long)nb;
 	if (n >= 0 && n <= 9)
 	{
 		n = n + 48;
@@ -9,26 +12,21 @@ void	ft_putnbr_int(int n)
 	}
 	else if (n < 0)
 	{
+		if (n == -2147483648)
+			write(1, "-2147483648", 11);
+		else
+		{
 			write(1, "-", 1);
 			n = n * (-1);
 			ft_putnbr_int(n);
 			return ;
+		}
 	}
 	else
 	{
 		ft_putnbr_int(n / 10);
 		ft_putnbr_int(n % 10);
 	}
-}
-
-int	ft_is_i_or_d(va_list args)
-{
-	int	nb;
-
-	nb = 0;
-	nb = va_arg(args, int);
-	ft_putnbr_int(nb);
-	return (nb);
 }
 
 int	ft_len_int(int nb)
@@ -44,4 +42,10 @@ int	ft_len_int(int nb)
 		nb = nb / 10;
 	}
 	return (len);
+}
+
+int	ft_is_i_or_d(int nb)
+{
+	ft_putnbr_int(nb);
+	return (ft_len_int(nb));
 }

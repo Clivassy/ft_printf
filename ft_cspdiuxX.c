@@ -6,7 +6,7 @@ int    ft_putchar(int c)
 	return (1);
 }
 
-int	ft_printpercent(void)
+int	ft_print_percent(void)
 {
 	ft_putchar('%');
 	return (1);
@@ -21,20 +21,16 @@ int     ft_cspdiuxX(va_list args, const char s)
 		if (s  == 's')
 			count += ft_print_str(va_arg(args, char *));
 		if (s == 'p')
-		{
-			ft_putchar('0');
-    		ft_putchar('x');
-			count += ft_pointer_len(ft_is_pointer(args));
-		} 
+			count += ft_is_pointer(va_arg(args, unsigned long long));
 		if (s == 'd')
-			count +=  ft_len_int(ft_is_i_or_d(args));
+			count += ft_is_i_or_d(va_arg(args, int));
 		if (s == 'i')
-			count += ft_len_int(ft_is_i_or_d(args));
+			count += ft_is_i_or_d(va_arg(args, int));
 		if (s == 'u')
-			count += ft_len_unsigned(ft_is_unsigned(args));
+			count += ft_print_unsigned(va_arg(args, unsigned int));
 		if (s == 'x' || s == 'X')
 			count += ft_is_hexa(va_arg(args, unsigned int), s);
 		if (s == '%')
-			count += ft_printpercent();
+			count += ft_print_percent();
 	return (count);
 }

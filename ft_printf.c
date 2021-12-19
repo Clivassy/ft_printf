@@ -34,6 +34,5 @@ int ft_printf(const char *s, ...)
 		i++;
 	}
 	va_end (args);
-	printf("\n%d", count);
 	return (count);
 }
