@@ -6,16 +6,16 @@
 /*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:10:17 by jbatoro           #+#    #+#             */
-/*   Updated: 2021/12/15 23:11:54 by jbatoro          ###   ########.fr       */
+/*   Updated: 2021/12/19 17:50:13 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
-	int i;
-	va_list args;
-	int count;
+	int		i;
+	va_list	args;
+	int		count;
 
 	count = 0;
 	i = 0;
@@ -24,7 +24,7 @@ int ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			count += ft_cspdiuxX(args, s[i + 1]);
+			count += ft_cspdiux(args, s[i + 1]);
 			i++;
 		}
 		else

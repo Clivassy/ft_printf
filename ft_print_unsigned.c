@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/19 17:37:56 by jbatoro           #+#    #+#             */
+/*   Updated: 2021/12/19 17:38:45 by jbatoro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_len_itoa(unsigned int nb)
@@ -17,10 +29,11 @@ int	ft_len_itoa(unsigned int nb)
 	}
 	return (len);
 }
+
 char	*ft_utoa(unsigned int nb)
 {
-	char 	*str;
-	int	i;
+	char	*str;
+	int		i;
 
 	i = ft_len_itoa(nb);
 	str = (char *)malloc(sizeof(char) * (i + 1));

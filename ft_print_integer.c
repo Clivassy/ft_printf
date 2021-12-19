@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_integer.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/19 17:44:11 by jbatoro           #+#    #+#             */
+/*   Updated: 2021/12/19 17:44:38 by jbatoro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_putnbr_int(int nb)
 {
-	long n;
+	long	n;
 
 	n = (long)nb;
 	if (n >= 0 && n <= 9)
@@ -31,7 +43,7 @@ void	ft_putnbr_int(int nb)
 
 int	ft_len_int(int nb)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	if (nb <= 0)
