@@ -38,4 +38,5 @@ void		ft_putnbr_unsigned(unsigned n);
 int			ft_print_unsigned(unsigned int n);
 char		*ft_utoa(unsigned int nb);
 int			ft_len_itoa(unsigned int nb);
+char	    *ft_strncpy(char *dest, char *src, unsigned int n);
 #endif

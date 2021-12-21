@@ -42,9 +42,9 @@ int	ft_is_hexa(unsigned int nb, const char c)
 	char	base[16];
 
 	if (c == 'x')
-		strncpy(base, "0123456789abcdef", sizeof(base));
+		ft_strncpy(base, "0123456789abcdef", sizeof(base));
 	if (c == 'X')
-		strncpy(base, "0123456789ABCDEF", sizeof(base));
+		ft_strncpy(base, "0123456789ABCDEF", sizeof(base));
 	if (nb == 0)
 		return (ft_putchar('0'));
 	else

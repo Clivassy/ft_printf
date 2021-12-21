@@ -41,7 +41,7 @@ int	ft_is_pointer(unsigned long long ptr)
 	int		len;
 	char	base[16];
 
-	strncpy(base, "0123456789abcdef", sizeof(base));
+	ft_strncpy(base, "0123456789abcdef", sizeof(base));
 	len = 0;
 	len += write(1, "0x", 2);
 	if (ptr == 0)
