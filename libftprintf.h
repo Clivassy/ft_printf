@@ -6,7 +6,7 @@
 /*   By: jbatoro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 17:55:35 by jbatoro           #+#    #+#             */
-/*   Updated: 2021/12/19 18:18:40 by jbatoro          ###   ########.fr       */
+/*   Updated: 2021/12/19 18:18:40 by jbatoro          ###   ########.f/Users/juliabatoro/Desktop/42/TRONC COMMUN/Cercle_01/ft_printfr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int			ft_printf(const char *s, ...);
 int			ft_putchar(int c);
 int			ft_print_percent(void);
-int			ft_cspdiux(va_list args, const char s);
+int	        ft_search_format(va_list args, const char s);
 void		ft_putnbr_base_hexa(unsigned int nbr, char *base);
 int			ft_is_hexa(unsigned int nb, const char c);
 int			ft_len_unsigned(unsigned int nb);
@@ -38,5 +38,5 @@ void		ft_putnbr_unsigned(unsigned n);
 int			ft_print_unsigned(unsigned int n);
 char		*ft_utoa(unsigned int nb);
 int			ft_len_itoa(unsigned int nb);
-char	    *ft_strncpy(char *dest, char *src, unsigned int n);
+char	*ft_strncpy(char *dest, char *src, int n);
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_len_itoa(unsigned int nb)
 {
@@ -62,16 +62,16 @@ char	*ft_utoa(unsigned int nb)
 int	ft_print_unsigned(unsigned int n)
 {
 	int		len;
-	char	*num;
+	char	*nb;
 
 	len = 0;
 	if (n == 0)
-		len += write(1, "0", 1);
+		len += ft_putchar('0');
 	else
 	{
-		num = ft_utoa(n);
-		len += ft_print_str(num);
-		free(num);
+		nb = ft_utoa(n);
+		len += ft_print_str(nb);
+		free(nb);
 	}
 	return (len);
 }

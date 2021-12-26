@@ -9,20 +9,19 @@
 /*   Updated: 2021/12/19 17:44:02 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_putnbr_base_pointer(uintptr_t nbr, char *base)
 {
 	unsigned long long	long_nbr;
-	unsigned long		base_size;
 
-	base_size = 16;
 	long_nbr = (unsigned long long)nbr;
 	if (long_nbr > 15)
-		ft_putnbr_base_pointer(long_nbr / base_size, base);
-	ft_putchar(base[long_nbr % base_size]);
+		ft_putnbr_base_pointer(long_nbr / 16, base);
+	ft_putchar(base[long_nbr % 16]);
 }
 
+//uintptr_t : unsigned integer type that is capable of storing a data pointer. Which typically means that it's the same size as a pointer.
 int	ft_pointer_len(uintptr_t nb)
 {
 	int	len;
@@ -49,7 +48,8 @@ int	ft_is_pointer(unsigned long long ptr)
 	else
 	{
 		ft_putnbr_base_pointer(ptr, base);
-		len += ft_pointer_len(ptr);
+		//len += ft_pointer_len(ptr);
 	}
-	return (len);
+	return (ft_len_unsigned(ptr));
+	//return (len);
 }

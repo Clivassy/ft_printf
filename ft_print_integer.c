@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 void	ft_putnbr_int(int nb)
 {
@@ -29,7 +29,7 @@ void	ft_putnbr_int(int nb)
 		else
 		{
 			write(1, "-", 1);
-			n = n * (-1);
+			n = -n;
 			ft_putnbr_int(n);
 			return ;
 		}

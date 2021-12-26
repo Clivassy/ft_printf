@@ -9,30 +9,30 @@
 /*   Updated: 2021/12/19 17:50:13 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_printf(const char *s, ...)
 {
 	int		i;
 	va_list	args;
-	int		count;
+	int		len_return;
 
-	count = 0;
+	len_return = 0;
 	i = 0;
 	va_start(args, s);
 	while (s[i])
 	{
 		if (s[i] == '%')
 		{
-			count += ft_cspdiux(args, s[i + 1]);
+			len_return += ft_search_format(args, s[i + 1]);
 			i++;
 		}
 		else
 		{
-			count += ft_putchar(s[i]);
+			len_return += ft_putchar(s[i]);
 		}
 		i++;
 	}
 	va_end (args);
-	return (count);
+	return (len_return);
 }

@@ -9,21 +9,9 @@
 /*   Updated: 2021/12/19 17:49:59 by jbatoro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int	ft_putchar(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
-}
-
-int	ft_cspdiux(va_list args, const char s)
+int	ft_search_format(va_list args, const char s)
 {
 	int	count;
 
@@ -34,9 +22,7 @@ int	ft_cspdiux(va_list args, const char s)
 		count += ft_print_str(va_arg(args, char *));
 	if (s == 'p')
 		count += ft_is_pointer(va_arg(args, unsigned long long));
-	if (s == 'd')
-		count += ft_is_i_or_d(va_arg(args, int));
-	if (s == 'i')
+	if (s == 'd' || s == 'i')
 		count += ft_is_i_or_d(va_arg(args, int));
 	if (s == 'u')
 		count += ft_print_unsigned(va_arg(args, unsigned int));

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_len_unsigned(unsigned int nb)
 {
@@ -28,13 +28,11 @@ int	ft_len_unsigned(unsigned int nb)
 void	ft_putnbr_base_hexa(unsigned int nbr, char *base)
 {
 	long int		long_nbr;
-	unsigned int	base_size;
 
-	base_size = 16;
 	long_nbr = nbr;
 	if (long_nbr > 15)
-		ft_putnbr_base_pointer(long_nbr / base_size, base);
-	ft_putchar(base[long_nbr % base_size]);
+		ft_putnbr_base_pointer(long_nbr / 16, base);
+	ft_putchar(base[long_nbr % 16]);
 }
 
 int	ft_is_hexa(unsigned int nb, const char c)
