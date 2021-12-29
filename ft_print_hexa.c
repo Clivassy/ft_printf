@@ -27,12 +27,9 @@ int	ft_len_unsigned(unsigned int nb)
 
 void	ft_putnbr_base_hexa(unsigned int nbr, char *base)
 {
-	long int		long_nbr;
-
-	long_nbr = nbr;
-	if (long_nbr > 15)
-		ft_putnbr_base_pointer(long_nbr / 16, base);
-	ft_putchar(base[long_nbr % 16]);
+	if (nbr > 15)
+		ft_putnbr_base_hexa(nbr / 16, base);
+	ft_putchar(base[nbr % 16]);
 }
 
 int	ft_is_hexa(unsigned int nb, const char c)

@@ -12,11 +12,8 @@
 
 #include "libftprintf.h"
 
-void	ft_putnbr_int(int nb)
+void	ft_putnbr_int(int n)
 {
-	long	n;
-
-	n = (long)nb;
 	if (n >= 0 && n <= 9)
 	{
 		n = n + 48;

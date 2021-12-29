@@ -17,12 +17,9 @@ int	ft_len_itoa(unsigned int nb)
 	int	len;
 
 	len = 0;
-	if (nb < 0)
-	{
-		len = nb * (-1);
+	if (nb <= 0)
 		len++;
-	}
-	while (nb > 0)
+	while (nb != 0)
 	{
 		nb = nb / 10;
 		len++;
@@ -71,7 +68,7 @@ int	ft_print_unsigned(unsigned int n)
 	{
 		nb = ft_utoa(n);
 		len += ft_print_str(nb);
-		free(nb);
+		free (nb);
 	}
 	return (len);
 }

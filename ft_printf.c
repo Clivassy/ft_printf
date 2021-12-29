@@ -36,3 +36,13 @@ int	ft_printf(const char *s, ...)
 	va_end (args);
 	return (len_return);
 }
+
+
+/*int main()
+{
+	int returned; 
+	char str ='\0';
+	returned = printf("%s", str);
+	printf("%d\n", returned);
+	ft_printf("%s", str);
+}*/

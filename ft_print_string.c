@@ -19,7 +19,7 @@ int	ft_print_str(char *str)
 	i = 0;
 	if (str == NULL)
 	{
-		ft_putstr("(null)");
+		write (1, "(null)", 6);
 		return (6);
 	}
 	while (str[i])
@@ -28,17 +28,4 @@ int	ft_print_str(char *str)
 		i++;
 	}
 	return (i);
-}
-
-char	*ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (str);
 }
