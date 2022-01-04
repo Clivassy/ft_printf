@@ -20,23 +20,13 @@
 # include <stdlib.h>
 
 int			ft_printf(const char *s, ...);
-int			ft_putchar(int c);
-int			ft_print_percent(void);
-int	        ft_search_format(va_list args, const char s);
-void		ft_putnbr_base_hexa(unsigned int nbr, char *base);
-int			ft_is_hexa(unsigned int nb, const char c);
-int			ft_len_unsigned(unsigned int nb);
-void		ft_putnbr_int(int n);
-int			ft_is_i_or_d(int nb);
-int			ft_len_int(int nb);
-void	ft_putnbr_base_pointer(unsigned long long nbr, char *base);
-int			ft_pointer_len(unsigned long long nb);
-int			ft_is_pointer(unsigned long long ptr);
-int			ft_print_str(char *str);
-char		*ft_putstr(char *str);
-void		ft_putnbr_unsigned(unsigned n);
-int			ft_print_unsigned(unsigned int n);
+void	    ft_putchar(int c, int *count);
+void	    ft_search_format(va_list args, int *count, const char s);
+void	    ft_is_hexa(unsigned int nb, const char c, int *count);
+void	    ft_is_i_or_d(int nb, int *count);
+void	    ft_is_pointer(unsigned long long ptr, int *count);
+void	    ft_print_str(char *str, int *count);
+void	    ft_print_unsigned(unsigned int n, int *count);
 char		*ft_utoa(unsigned int nb);
-int			ft_len_itoa(unsigned int nb);
-char	*ft_strncpy(char *dest, char *src, int n);
+char	    *ft_strncpy(char *dest, char *src, int n);
 #endif

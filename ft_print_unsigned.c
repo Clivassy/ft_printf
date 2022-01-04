@@ -26,7 +26,6 @@ int	ft_len_itoa(unsigned int nb)
 	}
 	return (len);
 }
-
 char	*ft_utoa(unsigned int nb)
 {
 	char	*str;
@@ -56,19 +55,16 @@ char	*ft_utoa(unsigned int nb)
 	return (str);
 }
 
-int	ft_print_unsigned(unsigned int n)
+void	ft_print_unsigned(unsigned int n, int *count)
 {
-	int		len;
 	char	*nb;
 
-	len = 0;
 	if (n == 0)
-		len += ft_putchar('0');
+		ft_putchar('0', count);
 	else
 	{
 		nb = ft_utoa(n);
-		len += ft_print_str(nb);
+		ft_print_str(nb, count);
 		free (nb);
 	}
-	return (len);
 }

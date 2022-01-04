@@ -1,15 +1,9 @@
 #include "libftprintf.h"
 
-int	ft_putchar(int c)
+void	ft_putchar(int c, int *count)
 {
 	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_print_percent(void)
-{
-	ft_putchar('%');
-	return (1);
+	*count += 1;
 }
 
 char	*ft_strncpy(char *dest, char *src, int n)

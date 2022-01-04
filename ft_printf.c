@@ -24,25 +24,39 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			len_return += ft_search_format(args, s[i + 1]);
+			ft_search_format(args, &len_return, s[i + 1]);
 			i++;
 		}
 		else
 		{
-			len_return += ft_putchar(s[i]);
+			ft_putchar(s[i], &len_return);
 		}
 		i++;
 	}
 	va_end (args);
+	//printf("%d", len_return);
 	return (len_return);
 }
-
 
 /*int main()
 {
 	int returned; 
-	char str ='\0';
+	int *n = 0;
+
+	char *str = 0;
 	returned = printf("%s", str);
 	printf("%d\n", returned);
 	ft_printf("%s", str);
+
+	printf("\n");
+	returned = printf("%d", 45);
+	printf("%d\n", returned);
+	ft_printf("%d", 45);
+
+	printf("\n");
+	returned = printf("%p", n);
+	printf("%d\n", returned);
+	ft_printf("%p", n);
+	ft_printf("%%"); 
+	//printf(("%%"));
 }*/

@@ -12,20 +12,21 @@
 
 #include "libftprintf.h"
 
-int	ft_print_str(char *str)
+void	ft_print_str(char *str, int *count)
 {
 	int	i;
 
 	i = 0;
 	if (str == NULL)
 	{
-		write (1, "(null)", 6);
-		return (6);
+		write(1, "(null)", 6);
+		*count += 6;
+		return ;
 	}
 	while (str[i])
 	{
 		write(1, &str[i], 1);
 		i++;
+		*count += 1;
 	}
-	return (i);
 }
